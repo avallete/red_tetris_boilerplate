@@ -66,7 +66,7 @@ export class I {
   }
 }
 
-export class S {
+export class Z {
   constructor(row, col) {
     this.row = row;
     this.col = col;
