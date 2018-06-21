@@ -1,10 +1,40 @@
+const servconfig = require('./src/server/config/config')
+const clientconfig = require('./src/client/config/config')
+
 const params = {
-  server: {
-    host: '0.0.0.0',
-    port: 3004,
-    get url() { return 'http://' + this.host + ':' + this.port },
+  development: {
+    server: {
+      host: servconfig.host,
+      port: servconfig.port,
+      url: `http${servconfig.sslEnabled && 's' || ''}://${servconfig.host}:${servconfig.port}`,
+    },
+    client: {
+      host: clientconfig.host,
+      port: clientconfig.port,
+    },
+  },
+  test: {
+    server: {
+      host: servconfig.host,
+      port: servconfig.port,
+      url: `http${servconfig.sslEnabled && 's' || ''}://${servconfig.host}:${servconfig.port}`,
+    },
+    client: {
+      host: clientconfig.host,
+      port: clientconfig.port,
+    },
+  },
+  production: {
+    server: {
+      host: servconfig.host,
+      port: servconfig.port,
+      url: `http${servconfig.sslEnabled && 's' || ''}://${servconfig.host}:${servconfig.port}`,
+    },
+    client: {
+      host: clientconfig.host,
+      port: clientconfig.port,
+    },
   },
 }
 
-module.exports = params
-
+module.exports = params[servconfig.env]
