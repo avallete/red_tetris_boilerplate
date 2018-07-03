@@ -10,7 +10,7 @@
     "srv-dev": "cross-env NODE_ENV=development DEBUG=tetris:* babel-watch -w src src/server/main.js",
     "srv-dist": "cross-env NODE_ENV=production DEBUG=tetris:* babel src --out-dir dist",
     "srv-test": "cross-env NODE_ENV=test DEBUG=tetris:* babel-watch -w src src/server/main.js",
-    "test": "cross-env NODE_ENV=test mocha --require babel-core/register --reporter spec",
+    "test": "cross-env NODE_ENV=test mocha --require babel-core/register --reporter spec ./test/**.test.js ./src/**.test.js",
     "coverage": "cross-env NODE_ENV=test nyc --include src --all -r text -r lcov -r text --require babel-core/register mocha ",
     "lint": "npm run lint:js",
     "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern dist/*",
