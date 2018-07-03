@@ -8,5 +8,6 @@ const App = ({ message }) => (
 const mapStateToProps = (state) => ({
   message: state.message,
 })
+
 export default connect(mapStateToProps, null)(App)
 
