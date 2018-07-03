@@ -19,6 +19,7 @@ const envSchema = Joi.object({
   NODE_ENV: Joi.string().allow(['development', 'production', 'test']).required(),
   PORT: Joi.number().integer().positive().required(),
   HOST: Joi.string().required(),
+  BACKEND_API_BASEURL: Joi.string().required(),
 })
   .unknown()
   .required()
@@ -34,6 +35,7 @@ const config = {
   host: value.HOST,
   port: value.PORT,
   env: value.NODE_ENV,
+  backendUrl: value.BACKEND_API_BASEURL,
 }
 
 module.exports = config;
