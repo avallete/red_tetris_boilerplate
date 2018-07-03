@@ -9,7 +9,7 @@ dotenv.config({ path: path.resolve(path.join(__dirname, '../.env')) })
 /* Overwrite dotenv with the specific environment one if it exist */
 if (process.env && process.env.NODE_ENV) {
   const env = dotenv.parse(fs.readFileSync(path.resolve(path.join(__dirname, `../.env.${process.env.NODE_ENV}`))))
-  for (let k in env) {
+  for (const k in env) {
     process.env[k] = env[k]
   }
 }
@@ -20,7 +20,7 @@ const envSchema = Joi.object({
   PORT: Joi.number().integer().positive().required(),
   HOST: Joi.string().required(),
 })
-  .unknown() // Allow other variables to be in the process.env
+  .unknown()
   .required()
 
 const { error, value } = Joi.validate(process.env, envSchema)

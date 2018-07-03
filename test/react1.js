@@ -1,18 +1,19 @@
 import chai from 'chai'
 import React from 'react'
-import equalJSX from 'chai-equal-jsx'
-import { createRenderer } from 'react-addons-test-utils'
+import Adapter from 'enzyme-adapter-react-16'
+import chaiEnzyme from 'chai-enzyme'
+import { shallow, configure } from 'enzyme'
 import { Tetris, Board } from '../src/client/components/test'
 
+configure({ adapter: new Adapter() });
 chai.should()
-chai.use(equalJSX)
+chai.use(chaiEnzyme())
 
-describe('Fake react test', function() {
-  it('works', function() {
-    const renderer = createRenderer()
-    renderer.render(React.createElement(Tetris))
-    const output = renderer.getRenderOutput()
-    output.should.equalJSX(<Board/>)
+describe('Fake react test', () => {
+  it('works', (done) => {
+    const wrapper = shallow(<Board/>)
+    wrapper.length.should.equal(1)
+    wrapper.html().should.equal('<div></div>')
+    done()
   })
-
 })

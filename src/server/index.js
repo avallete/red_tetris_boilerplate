@@ -1,5 +1,8 @@
+import path from 'path';
 import fs from 'fs'
 import debug from 'debug'
+import socketIo from 'socket.io';
+import { createServer } from 'http';
 
 const logerror = debug('tetris:error')
 const loginfo = debug('tetris:info')
@@ -8,7 +11,7 @@ const initApp = (app, params, cb) => {
   const { host, port } = params
   const handler = (req, res) => {
     const file = req.url === '/bundle.js' ? '/../../build/bundle.js' : '/../../index.html'
-    fs.readFile(__dirname + file, (err, data) => {
+    fs.readFile(path.join(__dirname, file), (err, data) => {
       if (err) {
         logerror(err)
         res.writeHead(500)
@@ -28,8 +31,8 @@ const initApp = (app, params, cb) => {
 }
 
 const initEngine = io => {
-  io.on('connection', function(socket) {
-    loginfo('Socket connected: ' + socket.id)
+  io.on('connection', (socket) => {
+    loginfo(`Socket connected: ${ socket.id}`)
     socket.on('action', (action) => {
       if (action.type === 'server/ping') {
         socket.emit('action', { type: 'pong' })
@@ -39,10 +42,10 @@ const initEngine = io => {
 }
 
 export function create(params) {
-  const promise = new Promise((resolve, reject) => {
-    const app = require('http').createServer()
+  return new Promise((resolve) => {
+    const app = createServer()
     initApp(app, params, () => {
-      const io = require('socket.io')(app)
+      const io = socketIo(app)
       const stop = (cb) => {
         io.close()
         app.close(() => {
@@ -56,5 +59,4 @@ export function create(params) {
       resolve({ stop })
     })
   })
-  return promise
 }
