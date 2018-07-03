@@ -1,7 +1,7 @@
 {
-  "name": "red_tetrisboilerplate",
+  "name": "red_tetris_avallete_fbonhomm",
   "version": "0.0.1",
-  "author": "redpelicans",
+  "author": "avallete && fbonhomm",
   "license": "MIT",
   "scripts": {
     "eslint": "eslint src",
