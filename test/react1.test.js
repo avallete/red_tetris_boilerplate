@@ -3,7 +3,7 @@ import React from 'react'
 import Adapter from 'enzyme-adapter-react-16'
 import chaiEnzyme from 'chai-enzyme'
 import { shallow, configure } from 'enzyme'
-import { Tetris, Board } from '../src/client/components/test'
+import Board from '../src/client/components/Board'
 
 configure({ adapter: new Adapter() });
 chai.should()
