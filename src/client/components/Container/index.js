@@ -2,11 +2,13 @@ import React from 'react'
 import { elementType } from 'react-proptypes';
 import style from './style.css'
 
-const Container = ({ children, ...rest }) => (
-  <div className={style.container} {...rest}>
-    { children }
-  </div>
-);
+const Container = ({ children, ...rest }) => {
+  return (
+    <div className={style.container} {...rest}>
+      { children }
+    </div>
+  )
+};
 
 Container.propTypes = {
   children: elementType,

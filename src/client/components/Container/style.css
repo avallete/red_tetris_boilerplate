@@ -1,6 +1,7 @@
 /* All Sizes */
 :local(.container) {
   display: block;
+  max-height: 100% !important;
   max-width: 100% !important;
 }
 
@@ -78,26 +79,6 @@
 
 
 /*******************************
-             Types
-*******************************/
-
-
-/* Text Container */
-:local(.text.container) {
-  max-width: 700px !important;
-  line-height: 1.5;
-}
-:local(.text.container) {
-  font-size: 1.14285714rem;
-}
-
-/* Fluid */
-:local(.fluid.container) {
-  width: 100%;
-}
-
-
-/*******************************
            Variations
 *******************************/
 
@@ -109,10 +90,4 @@
 }
 :local([class*="right aligned"].container) {
   text-align: right;
-}
-:local(.justified.container) {
-  text-align: justify;
-  -webkit-hyphens: auto;
-  -ms-hyphens: auto;
-  hyphens: auto;
 }

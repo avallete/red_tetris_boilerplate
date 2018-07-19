@@ -7,15 +7,49 @@ import { appSelectors } from '../reducers/app'
 import { initApp } from '../actions/app'
 import reducer from '../reducers/app';
 import Board from '../components/Board';
+import Headbar from '../components/Headbar';
+import Game from '../components/Game';
+import styles from './style.css';
+import { sqr, sqra } from '../components/Game/style.css';
+
+const game = [
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 1, 0, 0, 1],
+  [0, 0, 0, 0, 0, 1, 1, 0, 0, 1],
+  [0, 0, 0, 0, 0, 1, 0, 0, 1, 1],
+]
 
 const App = (props) => (
-  <div>
-    <span>
-      {JSON.stringify(props)}
-    </span>
-    <button onClick={props.onClickInit}>Init app</button>
-    <button onClick={props.onClickInitAsync}>Init app async</button>
-    <Board/>
+  <div className={styles.app}>
+    <Headbar title={'Red-tetris-boilerplate'} />
+    <Board>
+      <div style={{ backgroundColor: '#892123', width: '100%' }}/>
+      <Game>
+        {game.map(row => row.map(c => c === 1 ?
+          <div className={sqra} /> :
+          <div className={sqr} />
+        ))}
+      </Game>
+      <div style={{ backgroundColor: '#532123', width: '100%' }}/>
+    </Board>
   </div>
 )
 

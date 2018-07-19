@@ -1,0 +1,16 @@
+:local(.headbar) {
+  background-color: #82ccdd;
+  height: 100%;
+  width: 100%;
+}
+
+:local(.header) {
+  color: #3c6382;
+  text-align: center;
+}
+
+:local(.header) > h1 {
+  color: #3c6382;
+  text-align: center;
+  margin: 1vh 0 0 0;
+}
